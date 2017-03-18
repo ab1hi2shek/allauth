@@ -1,59 +1,59 @@
 <div class="row">
-<div class="col-md-2">
-
-  <ul class="pager">
-    <li>
-      <%if @prev_post!=nil %>
-      <%= link_to  'Previous', @prev_post %><p>
-      <% end %>
-    </li>
-  </ul>
+<!-- for previous button -->
+  <div class="col-md-2">
+    <ul class="pager">
+      <li>
+        <%if @prev_post!=nil %>
+        <%= link_to  'Previous', @prev_post %><p>
+        <% end %>
+      </li>
+    </ul>
   </div>
 
 
   <div class="col-md-8 ">
-
-  <h2 align = "center"><%= @post.title %></h2>
-
-<h4><br>
-<%= @post.content.html_safe %><br>
-</h4>
-<% @post.tags.each do |tag| %>
-    <%= link_to tag.name, tag_path(tag), class: 'waves-effect waves-light btn wow bounceInUp' %>
-  <% end %>
-
-<p align="right">Posted <%= @post.created_at.strftime("%b %d '%y at %H:%M") %></p>
-    <p align="right"><%= image_tag(User.find(@post.user_id).avatar, size: '50x50') %> <strong><%= User.find(@post.user_id).name %></strong></p>
-<br>
-<p align = "center">
-<%=link_to like_post_path(@post), method: :put, class: 'waves-effect waves-light btn wow bounceInUp' do %>
- <span class="glyphicon glyphicon-thumbs-up"></span><%=@post.get_upvotes.size%></td>
- <% end %>
- <%=link_to dislike_post_path(@post), method: :put, class: 'waves-effect waves-light btn wow bounceInUp' do %>
- <span class="glyphicon glyphicon-thumbs-down"></span><%=@post.get_downvotes.size%></td>
- <% end %>
-
-<% if can? :manage, @post %> 
-<%= link_to "Edit Article", edit_post_path(@post), class: 'waves-effect waves-light btn wow bounceInUp' %>
-<%= link_to "Delete Article", post_path(@post), method: :delete, data: { confirm: "Are you sure?" }, class: 'waves-effect waves-light btn wow bounceInUp'  %>
-<% end %>
-
-<%= link_to "All Articles", posts_path , class: 'waves-effect waves-light btn wow bounceInUp' %>
-</p>
-<br><hr><br>
-<%= render 'disqus' %>
-
-</div>
-
-<div class="col-md-2">
-
-  <ul class="pager">
-   <li>
-      <%if @next_post!=nil %>
-      <%= link_to  'Next', @next_post %></p><br>
+    <h2 align = "center"><%= @post.title %></h2>
+    <h4><br><%= @post.content.html_safe %><br></h4>
+    <% @post.tags.each do |tag| %>
+      <%= link_to tag.name, tag_path(tag), class: 'waves-effect waves-light btn wow bounceInUp' %>
     <% end %>
-    </li>
-  </ul>
-  </nav>
+
+    <p align="right">Posted <%= @post.created_at.strftime("%b %d '%y at %H:%M") %></p>
+    <p align="right"><%= image_tag(User.find(@post.user_id).avatar, size: '50x50') %> <strong><%= User.find(@post.user_id).name %></strong></p>
+    <br>
+
+    <p align = "center">
+      <%=link_to like_post_path(@post), method: :put, class: 'waves-effect waves-light btn wow bounceInUp' do %>
+      <span class="glyphicon glyphicon-thumbs-up"></span><%=@post.get_upvotes.size%></td>
+      <% end %>
+
+      <%=link_to dislike_post_path(@post), method: :put, class: 'waves-effect waves-light btn wow bounceInUp' do %>
+      <span class="glyphicon glyphicon-thumbs-down"></span><%=@post.get_downvotes.size%></td>
+      <% end %>
+
+      <!-- for managing posts -->
+      <% if can? :manage, @post %> 
+        <%= link_to "Edit Blog", edit_post_path(@post), class: 'waves-effect waves-light btn wow bounceInUp' %>
+        <%= link_to "Delete Blog", post_path(@post), method: :delete, data: { confirm: "Are you sure?" }, class: 'waves-effect waves-light btn wow bounceInUp'  %>
+      <% end %>
+
+      <%= link_to "All Blogs", posts_path , class: 'waves-effect waves-light btn wow bounceInUp' %>
+    </p>
+    <br><hr><br>
+
+    <!-- for disqus comment -->
+    <%= render 'disqus' %>
+
+  </div>
+
+  <div class="col-md-2">
+    <ul class="pager">
+      <li>
+        <%if @next_post!=nil %>
+          <%= link_to  'Next', @next_post %></p><br>
+        <% end %>
+      </li>
+    </ul>
+    </nav>
   </div>
 </div>

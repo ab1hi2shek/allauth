@@ -1,18 +1,25 @@
+
+<!-- for search box and new blog post -->
 <div class="row">
 	<div class="col-md-5 col-md-offset-2"><br>
 		<%= form_tag(posts_path, :method => "get", id: "search-form") do %>
-		<%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
+		<%= text_field_tag :search, params[:search], placeholder: "Search Blogs" %>
   </div>
+
   <div class="col-md-4"><br>
 		<%= submit_tag "Search", :class => 'waves-effect waves-light btn wow bounceInUp' %>
-		<% end %> 
+		<% end %>
+
     <% if can? :manage, Post %>
-    <span style="float: right;"><%= link_to "New Blog", new_post_path, class: 'waves-effect waves-light btn wow bounceInUp' %></span>
+      <span style="float: right;">
+        <%= link_to "New Blog", new_post_path, class: 'waves-effect waves-light btn wow bounceInUp' %></span>
     <% end %>
   </div>
 </div>
+
 <hr>
 
+<!-- for displaying recent blog posts -->
 <div class="row">
   <div class="col-md-7 col-md-offset-1">
   <h3>Recent Blogs</h3>
@@ -28,8 +35,9 @@
 
 	<%= will_paginate @posts %>
   </div>
+
+<!-- for right columns -->
   <div class="col-md-4 ">
-  
   	<h3>Most Upvoted Posts</h3>
     <div class="card">
       <div class="card-content wow fadeInUp" data-wow-delay="1s">

@@ -1,3 +1,4 @@
+<!-- for search box and new forum -->
 <div class="row">
 	<div class="col-md-5 col-md-offset-2"><br>
 		<%= form_tag(forums_path, :method => "get", id: "search-form") do %>
@@ -9,8 +10,10 @@
     <span style="float: right;"><%= link_to "New Forum", new_forum_path, class: 'waves-effect waves-light btn wow bounceInUp' %></span>
   </div>
 </div>
+
 <hr>
 
+<!-- for displaying all forums -->
 <div class="row">
   <div class="col-md-7 col-md-offset-1">
   <h3>Recent Forums</h3>
