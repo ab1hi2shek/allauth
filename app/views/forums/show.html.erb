@@ -40,8 +40,10 @@
  <% end %>
 
  <% if can? :manage, @forum %>
+
 <%= link_to "Edit Forum", edit_forum_path(@forum), class: 'btn btn-default btn-sm' %>
 <%= link_to "Delete Forum", forum_path(@forum), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-default btn-sm'  %>
+
 <% end %>
 
 <%= link_to "All Forums", forums_path , class: 'btn btn-default btn-sm' %>

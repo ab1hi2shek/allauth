@@ -3,6 +3,14 @@ has_many :posts
 has_many :forums
 has_many :comments
 
+validates :name, :email, :provider, :uid, :roles, presence: true
+
+  	enum roles: [
+				:normal,
+				:supervisor,
+				:superuser
+               ]
+
 class << self
 	$found_or_created=0;
 	def create_with_omniauth(auth)
@@ -17,6 +25,7 @@ class << self
 			user.provider=auth.provider
 			user.avatar=info.image
 			user.email=info.email
+			user.roles = 0
 			$found_or_created=2
 		end
 		user.save!

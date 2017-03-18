@@ -35,8 +35,13 @@
  <span class="glyphicon glyphicon-thumbs-down"></span><%=@post.get_downvotes.size%></td>
  <% end %>
  
+<% if can? :manage, Post %>
+
 <%= link_to "Edit Article", edit_post_path(@post), class: 'btn btn-default btn-sm' %>
 <%= link_to "Delete Article", post_path(@post), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-default btn-sm'  %>
+
+<% end %>
+
 <%= link_to "All Articles", posts_path , class: 'btn btn-default btn-sm' %>
 </p>
 <br><hr><br>
