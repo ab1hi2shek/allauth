@@ -1,15 +1,13 @@
 <div class="row">
 <div class="col-md-2">
 
-<nav aria-label="...">
   <ul class="pager">
     <li>
       <%if @prev_post!=nil %>
       <%= link_to  'Previous', @prev_post %><p>
-    <% end %>
-  </li>
+      <% end %>
+    </li>
   </ul>
-  </nav>
   </div>
 
 
@@ -21,28 +19,26 @@
 <%= @post.content.html_safe %><br>
 </h4>
 <% @post.tags.each do |tag| %>
-    <%= link_to tag.name, tag_path(tag), class: 'btn btn-default btn-sm' %>
+    <%= link_to tag.name, tag_path(tag), class: 'waves-effect waves-light btn wow bounceInUp' %>
   <% end %>
 
 <p align="right">Posted <%= @post.created_at.strftime("%b %d '%y at %H:%M") %></p>
     <p align="right"><%= image_tag(User.find(@post.user_id).avatar, size: '50x50') %> <strong><%= User.find(@post.user_id).name %></strong></p>
 <br>
 <p align = "center">
-<%=link_to like_post_path(@post), method: :put, class: 'btn btn-default btn-sm' do %>
+<%=link_to like_post_path(@post), method: :put, class: 'waves-effect waves-light btn wow bounceInUp' do %>
  <span class="glyphicon glyphicon-thumbs-up"></span><%=@post.get_upvotes.size%></td>
  <% end %>
- <%=link_to dislike_post_path(@post), method: :put, class: 'btn btn-default btn-sm' do %>
+ <%=link_to dislike_post_path(@post), method: :put, class: 'waves-effect waves-light btn wow bounceInUp' do %>
  <span class="glyphicon glyphicon-thumbs-down"></span><%=@post.get_downvotes.size%></td>
  <% end %>
- 
-<% if can? :manage, Post %>
 
-<%= link_to "Edit Article", edit_post_path(@post), class: 'btn btn-default btn-sm' %>
-<%= link_to "Delete Article", post_path(@post), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-default btn-sm'  %>
-
+<% if can? :manage, @post %> 
+<%= link_to "Edit Article", edit_post_path(@post), class: 'waves-effect waves-light btn wow bounceInUp' %>
+<%= link_to "Delete Article", post_path(@post), method: :delete, data: { confirm: "Are you sure?" }, class: 'waves-effect waves-light btn wow bounceInUp'  %>
 <% end %>
 
-<%= link_to "All Articles", posts_path , class: 'btn btn-default btn-sm' %>
+<%= link_to "All Articles", posts_path , class: 'waves-effect waves-light btn wow bounceInUp' %>
 </p>
 <br><hr><br>
 <%= render 'disqus' %>
@@ -51,13 +47,11 @@
 
 <div class="col-md-2">
 
-<nav aria-label="...">
   <ul class="pager">
    <li>
       <%if @next_post!=nil %>
       <%= link_to  'Next', @next_post %></p><br>
     <% end %>
-
     </li>
   </ul>
   </nav>

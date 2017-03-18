@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="theme-color" content="#2196F3">
     <title>Blog</title>
+    <link rel='shortcut icon' type='image/x-icon' href='img/rec.png'/>
+    
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   
@@ -23,38 +27,53 @@
      </script>
     <% end %>
 <!--  -->
-
-
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="/posts">Blog <span class="sr-only">(current)</span></a></li>
-        <li class="active"><a href="/forums">Forum <span class="sr-only">(current)</span></a></li>
-        
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-          <% if current_user %>
-            <li><%= image_tag(current_user.avatar, size: '50x50') %></li>
-            <li><%= current_user.name %></li>
-            <li><%= link_to 'Log Out', '/logout' %></li>
+<div id="myWS" class="wow fadeIn" >
+<div class="navbar-fixed">
+  <nav id="nav_f" class="blue-grey darken-2" role="navigation">
+    <div class="container">
+      <div class="nav-wrapper">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
+          <ul class="left hide-on-med-and-down">
+            <li><a href="/posts" style="color: #fffde7;" >Blog <span class="sr-only">(current)</span></a></li>
+            <li><a href="/forums" style="color: #fffde7" >Forum <span class="sr-only">(current)</span></a></li>
+          </ul>
+          <a href="http://recursionnitd.in" class="brand-logo" style="color: #fffde7;" target="_blank">RECursion</a>
+          <ul class="right hide-on-med-and-down">
+            <% if current_user %>
+              <li><%= image_tag(current_user.avatar, size: '50x50') %></li>
+              <li><%= current_user.name %></li>
+              <li class="active"><%= link_to 'Log Out', '/logout', :style=> "color: #fffde7" %></li>
   
-          <% else %>
-            <li><%= link_to 'Facebook', '/auth/facebook' %></li>
-            <li><%= link_to 'Google+', '/auth/google' %></li>
+            <% else %>
+              <li><%= link_to 'Facebook', '/auth/facebook', :style=> "color: #fffde7" %></li>
+              <li><%= link_to 'Google+', '/auth/google', :style=> "color: #fffde7" %></li>
+            <% end %>
+          </ul>
+          <ul id="nav-mobile" class="side-nav">
+            <li class="active"><a href="/posts" style="color: #fffde7;" >Blog <span class="sr-only">(current)</span></a></li>
+            <li><a href="/forums" style="color: #fffde7" >Forum <span class="sr-only">(current)</span></a></li>
+            <% if current_user %>
+              <li><%= image_tag(current_user.avatar, size: '50x50') %></li>
+              <li><%= current_user.name %></li>
+              <li class="active"><%= link_to 'Log Out', '/logout', :style=> "color: #fffde7" %></li>
   
-          <% end %>
-
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+            <% else %>
+              <li><%= link_to 'Facebook', '/auth/facebook', :style=> "color: #fffde7" %></li>
+              <li><%= link_to 'Google+', '/auth/google', :style=> "color: #fffde7" %></li>
+            <% end %>
+          </ul>
+         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+        <!--</div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </div>
+  </nav>
+</div>
+</div>
 
     <%= yield %>
   </body>
-
+  
   <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 

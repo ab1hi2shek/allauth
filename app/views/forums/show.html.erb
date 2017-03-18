@@ -1,7 +1,6 @@
 <div class="row">
 <div class="col-md-2">
 
-<nav aria-label="...">
   <ul class="pager">
     <li>
       <%if @prev_forum!=nil %>
@@ -23,7 +22,7 @@
 <%= @forum.content.html_safe %><br>
 </h4>
 <% @forum.tags.each do |tag| %>
-    <%= link_to tag.name, tag_path(tag), class: 'btn btn-default btn-sm' %>
+    <%= link_to tag.name, tag_path(tag), class: 'waves-effect waves-light btn wow bounceInUp' %>
   <% end %>
 
 <p align="right">asked <%= @forum.created_at.strftime("%b %d '%y at %H:%M") %></p>
@@ -32,21 +31,19 @@
   
 
 <p align = "center">
-<%=link_to like_forum_path(@forum), method: :put, class: 'btn btn-default btn-sm' do %>
+<%=link_to like_forum_path(@forum), method: :put, class: 'waves-effect waves-light btn wow bounceInUp' do %>
  <span class="glyphicon glyphicon-thumbs-up"></span><%=@forum.get_upvotes.size%></td>
  <% end %>
- <%=link_to dislike_forum_path(@forum), method: :put, class: 'btn btn-default btn-sm' do %>
+ <%=link_to dislike_forum_path(@forum), method: :put, class: 'waves-effect waves-light btn wow bounceInUp' do %>
  <span class="glyphicon glyphicon-thumbs-down"> </span><%=@forum.get_downvotes.size%></td>
  <% end %>
 
  <% if can? :manage, @forum %>
-
-<%= link_to "Edit Forum", edit_forum_path(@forum), class: 'btn btn-default btn-sm' %>
-<%= link_to "Delete Forum", forum_path(@forum), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-default btn-sm'  %>
-
+<%= link_to "Edit Forum", edit_forum_path(@forum), class: 'waves-effect waves-light btn wow bounceInUp' %>
+<%= link_to "Delete Forum", forum_path(@forum), method: :delete, data: { confirm: "Are you sure?" }, class: 'waves-effect waves-light btn wow bounceInUp'  %>
 <% end %>
 
-<%= link_to "All Forums", forums_path , class: 'btn btn-default btn-sm' %>
+<%= link_to "All Forums", forums_path , class: 'waves-effect waves-light btn wow bounceInUp' %>
 </p>
 
 <div id="comments">
@@ -62,7 +59,6 @@
 
 <div class="col-md-2">
 
-<nav aria-label="...">
   <ul class="pager">
    <li>
       <%if @next_forum!=nil %>

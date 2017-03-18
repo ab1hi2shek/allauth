@@ -1,6 +1,8 @@
 <div class="row">
   <div class="col-md-4 col-md-offset-1">
     <h3>Articles Tagged with <%= @tag.name %></h3>
+    <div class="card">
+      <div class="card-content wow fadeInUp" data-wow-delay="1s">
     <% if @tag.posts.count != 0 %>
       <% @tag.posts.each do |post| %>
         <h4><%= link_to post.title, post_path(post) %></h4><hr>
@@ -8,9 +10,12 @@
     <% else %>
       <h4> No Posts exist with this tag </h4>
     <% end %>
-
+    </div>
+    </div>
     <hr>
     <h3>Forum Tagged with <%= @tag.name %></h3>
+    <div class="card">
+      <div class="card-content wow fadeInUp" data-wow-delay="1s">
     <% if @tag.forums.count != 0 %>
       <% @tag.forums.each do |forum| %>
         <h4><%= link_to forum.title, forum_path(forum) %></h4><hr>
@@ -18,23 +23,32 @@
     <% else %>
       <h4> No forum exist with this tag </h4>
     <% end %>
+    </div>
+    </div>
   </div> 
 
   <div class="col-md-4 col-md-offset-2">
     <h3> Number of posts with all tags </h3>
+    <div class="card">
+      <div class="card-content wow fadeInUp" data-wow-delay="1s">
     <% Tag.all.each do |tag| %>
     	<% if tag.posts.count  > 0 %>
     		<h4><%= link_to tag.name, tag_path(tag) %><span class="badge"><%= tag.posts.count %></span></h4>
     		<% end %>
     <% end %>
+    </div>
+    </div>
 
-    <hr>
     <h3> Number of forums with all tags </h3>
+    <div class="card">
+      <div class="card-content wow fadeInUp" data-wow-delay="1s">
     <% Tag.all.each do |tag| %>
     	<% if tag.forums.count  > 0 %>
   	   <h4><%= link_to tag.name, tag_path(tag) %><span class="badge"><%= tag.forums.count %></span></h4>
   	   <% end %>
     <% end %>
+    </div>
+    </div>
   </div>
 </div>
 

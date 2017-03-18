@@ -9,14 +9,14 @@ def create
 			flash[:success]="Complete your Profile!!"
   			redirect_to edit_user_path(user)
 		else
-			flash[:success] = "Successfully logged in"
+			flash[:success] = "welcome " + user.name + " !"
 			redirect_to root_url
 		end
 end
 
 def destroy
 	reset_session
-	flash[:success] = "Successfully logged out"
+	flash[:success] = "Hope to see you soon !! "
 	redirect_to root_url
 end
 

@@ -1,7 +1,9 @@
 class CommentsController < ApplicationController
+	load_and_authorize_resource
+
 	def create
 		@forum = Forum.friendly.find(params[:forum_id])
-		@comment = @forum.comments.create(params[:comment].permit(:comment))
+		@comment = @forum.comments.new comment_params
 		@comment.user = current_user
 		@comment.save!
 
@@ -27,5 +29,11 @@ class CommentsController < ApplicationController
 		@comment.destroy
 
 		redirect_to forum_path(@forum)
+	end
+
+	private
+
+	def comment_params
+		params.require(:comment).permit(:comment)
 	end
 end

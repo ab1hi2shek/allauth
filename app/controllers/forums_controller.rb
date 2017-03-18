@@ -1,6 +1,7 @@
 class ForumsController < ApplicationController
 
 	before_action :find_forum, only: [:show, :edit, :update, :destroy]
+	load_and_authorize_resource :except => [:index]
 
 	def index
 		if params[:search]
